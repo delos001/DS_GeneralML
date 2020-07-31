@@ -12,12 +12,12 @@
 # Specify file parameters  ### Check These Parameters Before Running <---------------------------
 #----------------------------------------------------------------------
 # open file parameters
-filePath <- "C:/Users/q713174/Desktop/LilyBlaze/"  ## remember the / at the end
-fileName <- "30Jul2020_e-CTS_PYAB_Patient_Visit_Date_1650"   ##update file name <----------------
+filePath <- "C:/Users/delos001/Desktop/"  ## remember the / at the end
+fileName <- "testfile"   ##update file name <----------------
 fileExt <- ".xlsx"
 fileSheet <- 'Patient Status Report_EXCEL'
 
-savePath <- "C:/Users/q713174/Desktop/LilyBlaze/FixedVisitDateFiles"
+savePath <- "C:/Users/delos001/Desktop/"
 saveName <- "e-CTS_PYAB_Patient_Visit_Date_1650_fixed"
 saveExt <- '.csv'
 
@@ -101,10 +101,17 @@ meltvdf = melt(setDT(castvdf),
            value.name = "Visit Date"
            )
 
-finalvdf = data.frame(meltvdf)
-
-# Sort by Site-Subject-Date
-meltvdf = meltvdf %>%
+finalvdf = data.frame(meltvdf) %>%
+  dplyr::mutate(Visit.Number = as.numeric(sub(".*_", "", Visit)),
+                Reference.Day.Flag = ifelse(Visit.Date == as.Date(Sys.time()), 
+                                            "Today",
+                                      ifelse(Visit.Date == as.Date(Sys.time())+1, 
+                                             "Tomorrow",
+                                       ifelse(Visit.Date < as.Date(Sys.time()), 
+                                              "Past", "Future"))),
+                Day.of.Week = weekdays(Visit.Date),
+                Week.Number = week(Visit.Date),
+                Month.Number = format(Visit.Date, '%m')) %>%
   dplyr::arrange(`Site`, `Patient`, `Visit Date`)
 
 
@@ -112,6 +119,6 @@ meltvdf = meltvdf %>%
 # Write Melted Data to File
 #----------------------------------------------------------------------
 
-write.csv(meltvdf, file.path(savePath, 
+write.csv(finalvdf, file.path(savePath, 
                              paste(saveName, saveExt, sep = "")),
           row.names = FALSE)

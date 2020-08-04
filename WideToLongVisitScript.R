@@ -1,3 +1,4 @@
+
 ###############################################################################
 ###############################################################################
 #
@@ -12,26 +13,25 @@
 # Specify file parameters  ### Check These Parameters Before Running
 #----------------------------------------------------------------------
 
-# OPEN PARAMETERS------------------------------------------------------
-## File Parameters-----------------------------------------------------
+# OPEN PARAMETERS----------------------------------------------------------------update this fields as needed
 ## Visit Data file 
-vdName = "testfile"
-vdExt = '.xlsx'
-vdSheet = 'Patient Status Report_EXCEL'
-vdPath = 'C:/Users/delos001/Desktop/'
+vdName = "03Aug2020_e-CTS_PYAB_Patient_Visit_Date_1650"                         #this is the visit data file name
+vdExt = '.xlsx'                                                                 #this is the visit data extension
+vdSheet = 'Patient Status Report_EXCEL'                                         #this is the sheet name containing the visit data
+vdPath = 'C:/Users/q713174/Desktop/LilyBlaze/ReceivedFiles/'                    #this is where you saved the file (change \ to / and end with a /)
 
 ## Zip Code file-------------------------------------------------------
-zipName = "Site Zip Codes3"
-zipExt = '.xlsx'
-zipSheet = 'Sheet1'
-zipPath = 'C:/Users/delos001/Desktop/GitHub/DS_GeneralML/'
+ContactsName = "Site Contacts and Site Ops Assignments"                         #this is the zip code data file name
+ContactsExt = '.xlsx'                                                           #this is the zip code file extension
+ContactsSheet = 'SC Assignments'                                                #this is the name of the sheet that has the zip code data
+ContactsPath = 'C:/Users/q713174/Desktop/LilyBlaze/ReceivedFiles/'              #this is where you saved the file (change \ to / and end with a /)
 
 
 #SAVE PARAMETERS-------------------------------------------------------
 ## Final output save parameters----------------------------------------
-savePath <- "C:/Users/delos001/Desktop/"
-saveName <- "e-CTS_PYAB_Patient_Visit_Date_1650_fixed"
-saveExt <- '.csv'
+savePath <- "C:/Users/q713174/Desktop/LilyBlaze/FixedVisitDateFiles/"           #this is where you want to save the file after running (always end with /)
+saveName <- "e-CTS_PYAB_Patient_Visit_Date_1650_fixed"                          #this is what you want to name the file after running
+saveExt <- '.csv'                                                               #this is what file type you want to save (csv is best practice)
 
 
 #----------------------------------------------------------------------
@@ -56,14 +56,17 @@ vdfile = read_excel(paste(vdPath,
                           vdName, 
                           vdExt, sep = ""), 
                     sheet = vdSheet)
-vdf = data.frame(vdfile)
+
+vdf = data.frame(vdfile) %>%
+  dplyr::select('Site', 'Site.Name', 'Investigator', 'Patient', 'Gender',
+                'Visit', 'Patient.Visit.Processed.Date', 'Patient.Status')
 
 ## read zip code file
-zipfile = read_excel(paste(zipPath, 
-                          zipName, 
-                          zipExt, sep = ""), 
-                    sheet = zipSheet)
-zipdf = data.frame(zipfile)
+Contactsfile = read_excel(paste(ContactsPath, 
+                                ContactsName, 
+                                ContactsExt, sep = ""), 
+                          sheet = ContactsSheet)
+Contactsdf = data.frame(Contactsfile)
 #----------------------------------------------------------------------
 # Format Columns
 #----------------------------------------------------------------------
@@ -85,7 +88,7 @@ vdf[dashCols] = lapply(vdf[dashCols],
 
 
 ## ZipCode Data Columns
-zipdf$Site = as.character(zipdf$Site)
+Contactsdf$Site = as.character(Contactsdf$'Site.Reference..')
 
 
 #----------------------------------------------------------------------
@@ -134,21 +137,20 @@ finalvdf = data.frame(meltvdf) %>%
   dplyr::mutate(Visit.Number = as.numeric(sub(".*_", "", Visit)),
                 Reference.Day.Flag = ifelse(Visit.Date == as.Date(Sys.time()), 
                                             "Today",
-                                      ifelse(Visit.Date == as.Date(Sys.time())+1, 
+                                            ifelse(Visit.Date == as.Date(Sys.time())+1, 
                                                    "Tomorrow",
-                                        ifelse(Visit.Date < as.Date(Sys.time()), 
+                                                   ifelse(Visit.Date < as.Date(Sys.time()), 
                                                           "Past", "Future"))),
                 Day.of.Week = weekdays(Visit.Date),
                 Week.Number = week(Visit.Date),
                 Month.Number = format(Visit.Date, '%m')) %>%
-  dplyr::left_join(zipdf[,c('Site',
-                                      'Location.State.Province', 
-                                      'Location.City',
-                                      'Zip.Code')],
+  dplyr::left_join(Contactsdf[,c('Site',
+                            'Location.State.Province', 
+                            'Location.City')],
                    by = c('Site' = 'Site')) %>%
   dplyr::arrange(`Site`, `Patient`, `Visit.Date`) %>%
   dplyr::select(Site, Site.Name, Investigator, Location.State.Province, 
-                Location.City, Zip.Code, Patient, Patient.Status, Gender, 
+                Location.City, Patient, Patient.Status, Gender, 
                 D1.Date.Present, Visit, Visit.Number, Visit.Date, Day.of.Week, 
                 Week.Number, Month.Number, Reference.Day.Flag)
 

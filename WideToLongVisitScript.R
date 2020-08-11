@@ -12,8 +12,8 @@
 #----------------------------------------------------------------------
 # Specify file parameters  ### Check These Parameters Before Running
 #----------------------------------------------------------------------
-
-# OPEN PARAMETERS----------------------------------------------------------------update this fields as needed
+#-------------------------------------------------------------------------------
+# OPEN PARAMETERS---------------------------------------------------------------
 ## Visit Data file 
 vdName = "_Current_e-CTS_PYAB_Patient_Visit_Date"                               #this is the visit data file name
 vdExt = '.xlsx'                                                                 #this is the visit data extension
@@ -26,6 +26,11 @@ ContactsExt = '.xlsx'                                                           
 ContactsSheet = 'SC Assignments'                                                #this is the name of the sheet that has the zip code data
 ContactsPath = 'C:/Users/q713174/Desktop/LilyBlaze/ReceivedFiles/'              #this is where you saved the file (change \ to / and end with a /)
 
+## Language file
+LangName = 'filename'
+LangExt = '.xlsx'
+LangSheet = 'Sheet'
+LangPath = 'filepath'
 
 #SAVE PARAMETERS-------------------------------------------------------
 ## Final output save parameters----------------------------------------
@@ -67,6 +72,13 @@ Contactsfile = read_excel(paste(ContactsPath,
                                 ContactsExt, sep = ""), 
                           sheet = ContactsSheet)
 Contactsdf = data.frame(Contactsfile)
+
+## read language file
+Languagefile = read_excel(pate(LangPath,
+                               LangName,
+                               LangExt, sep = ""),
+                          sheet = LangSheet)
+langdf = data.frame(Languagefile)
 #----------------------------------------------------------------------
 # Format Columns
 #----------------------------------------------------------------------
@@ -148,9 +160,11 @@ finalvdf = data.frame(meltvdf) %>%
                             'Location.State.Province', 
                             'Location.City')],
                    by = c('Site' = 'Site')) %>%
+  dplyr::left_join(langdf[, c('Site', 'Language')],
+                   by = 'Site') %>%
   dplyr::arrange(`Site`, `Patient`, `Visit.Date`) %>%
   dplyr::select(Site, Site.Name, Investigator, Location.State.Province, 
-                Location.City, Patient, Patient.Status, Gender, 
+                Location.City, Patient, Patient.Status, Gender, Language,
                 D1.Date.Present, Visit, Visit.Number, Visit.Date, Day.of.Week, 
                 Week.Number, Month.Number, Reference.Day.Flag)
 

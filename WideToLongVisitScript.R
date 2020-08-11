@@ -15,7 +15,7 @@
 
 # OPEN PARAMETERS----------------------------------------------------------------update this fields as needed
 ## Visit Data file 
-vdName = "03Aug2020_e-CTS_PYAB_Patient_Visit_Date_1650"                         #this is the visit data file name
+vdName = "_Current_e-CTS_PYAB_Patient_Visit_Date"                               #this is the visit data file name
 vdExt = '.xlsx'                                                                 #this is the visit data extension
 vdSheet = 'Patient Status Report_EXCEL'                                         #this is the sheet name containing the visit data
 vdPath = 'C:/Users/q713174/Desktop/LilyBlaze/ReceivedFiles/'                    #this is where you saved the file (change \ to / and end with a /)

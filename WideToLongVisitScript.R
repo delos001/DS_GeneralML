@@ -1,4 +1,3 @@
-
 ###############################################################################
 ###############################################################################
 #
@@ -21,16 +20,16 @@ vdSheet = 'Patient Status Report_EXCEL'                                         
 vdPath = 'C:/Users/q713174/Desktop/LilyBlaze/ReceivedFiles/'                    #this is where you saved the file (change \ to / and end with a /)
 
 ## Zip Code file-------------------------------------------------------
-ContactsName = "Site Contacts and Site Ops Assignments"                         #this is the zip code data file name
+ContactsName = "_Current_Site Contacts and Site Ops Assignments"                #this is the zip code data file name
 ContactsExt = '.xlsx'                                                           #this is the zip code file extension
 ContactsSheet = 'SC Assignments'                                                #this is the name of the sheet that has the zip code data
 ContactsPath = 'C:/Users/q713174/Desktop/LilyBlaze/ReceivedFiles/'              #this is where you saved the file (change \ to / and end with a /)
 
 ## Language file
-LangName = 'filename'
+LangName = '_Current_e-CTS_PYAB_Site_Language'
 LangExt = '.xlsx'
-LangSheet = 'Sheet'
-LangPath = 'filepath'
+LangSheet = 'Sheet1'
+LangPath = 'C:/Users/q713174/Desktop/LilyBlaze/ReceivedFiles/'
 
 #SAVE PARAMETERS-------------------------------------------------------
 ## Final output save parameters----------------------------------------
@@ -74,7 +73,7 @@ Contactsfile = read_excel(paste(ContactsPath,
 Contactsdf = data.frame(Contactsfile)
 
 ## read language file
-Languagefile = read_excel(pate(LangPath,
+Languagefile = read_excel(paste(LangPath,
                                LangName,
                                LangExt, sep = ""),
                           sheet = LangSheet)
@@ -101,6 +100,9 @@ vdf[dashCols] = lapply(vdf[dashCols],
 
 ## ZipCode Data Columns
 Contactsdf$Site = as.character(Contactsdf$'Site.Reference..')
+
+## Language data
+langdf$Subject = as.character(langdf$Subject)
 
 
 #----------------------------------------------------------------------
@@ -157,11 +159,12 @@ finalvdf = data.frame(meltvdf) %>%
                 Week.Number = week(Visit.Date),
                 Month.Number = format(Visit.Date, '%m')) %>%
   dplyr::left_join(Contactsdf[,c('Site',
-                            'Location.State.Province', 
-                            'Location.City')],
+                                 'Location.State.Province', 
+                                 'Location.City')],
                    by = c('Site' = 'Site')) %>%
-  dplyr::left_join(langdf[, c('Site', 'Language')],
-                   by = 'Site') %>%
+  dplyr::left_join(langdf[, c('Subject', 'Language')],
+                   by = c('Patient' = 'Subject')) %>%
+  dplyr::mutate(Language = ifelse(is.na(Language), 'English', Language)) %>%
   dplyr::arrange(`Site`, `Patient`, `Visit.Date`) %>%
   dplyr::select(Site, Site.Name, Investigator, Location.State.Province, 
                 Location.City, Patient, Patient.Status, Gender, Language,

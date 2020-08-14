@@ -14,27 +14,27 @@
 #-------------------------------------------------------------------------------
 # OPEN PARAMETERS---------------------------------------------------------------
 ## Visit Data file 
-vdName = "_Current_e-CTS_PYAB_Patient_Visit_Date"                               #this is the visit data file name
+vdName = "_Current_filename"                               #this is the visit data file name
 vdExt = '.xlsx'                                                                 #this is the visit data extension
 vdSheet = 'Patient Status Report_EXCEL'                                         #this is the sheet name containing the visit data
-vdPath = 'C:/Users/q713174/Desktop/LilyBlaze/ReceivedFiles/'                    #this is where you saved the file (change \ to / and end with a /)
+vdPath = 'C:/Users/path/'                    #this is where you saved the file (change \ to / and end with a /)
 
 ## Zip Code file-------------------------------------------------------
-ContactsName = "_Current_Site Contacts and Site Ops Assignments"                #this is the zip code data file name
+ContactsName = "_Current_filename"                #this is the zip code data file name
 ContactsExt = '.xlsx'                                                           #this is the zip code file extension
 ContactsSheet = 'SC Assignments'                                                #this is the name of the sheet that has the zip code data
-ContactsPath = 'C:/Users/q713174/Desktop/LilyBlaze/ReceivedFiles/'              #this is where you saved the file (change \ to / and end with a /)
+ContactsPath = 'C:/Users/path/'              #this is where you saved the file (change \ to / and end with a /)
 
 ## Language file
-LangName = '_Current_e-CTS_PYAB_Site_Language'
+LangName = '_Current_filename'
 LangExt = '.xlsx'
 LangSheet = 'Sheet1'
-LangPath = 'C:/Users/q713174/Desktop/LilyBlaze/ReceivedFiles/'
+LangPath = 'C:/Users/path/'
 
 #SAVE PARAMETERS-------------------------------------------------------
 ## Final output save parameters----------------------------------------
-savePath <- "C:/Users/q713174/Desktop/LilyBlaze/FixedVisitDateFiles/"           #this is where you want to save the file after running (always end with /)
-saveName <- "e-CTS_PYAB_Patient_Visit_Date_1650_fixed"                          #this is what you want to name the file after running
+savePath <- "_Current_filename"           #this is where you want to save the file after running (always end with /)
+saveName <- "filename"                          #this is what you want to name the file after running
 saveExt <- '.csv'                                                               #this is what file type you want to save (csv is best practice)
 
 

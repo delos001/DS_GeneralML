@@ -1,0 +1,51 @@
+---
+title: "Economic Indicators"
+output: html_notebook
+---
+
+
+```{r}
+plot(cars)
+```
+
+
+Objectively assessing the health of an economy can be challenging. A single indicator will not provide a complete picture and even a group of indicators may only hint at economic health. There is an abundance of economic indicators consisting of many millions of data points.  There is also an overabundance of reporting on the economy.  Interested citizens could chose to adopt the opinion of another individual who has represented themselves as knowledgeable on the topic at hand.  However, this route requires individuals to navigate a storm of subjective considerations and possible bias.
+
+Disagreement about which indicators are meaningful and the extent to which they tell the story is common.  Data lag can impact an indicator's ability to provide timely information about the economy. A strong indicator at longer frequencies may be perceived as less valuable than an indicator that is more frequently available but slightly less predictive. For example, according to the US Department of Economics, GDP is the most influential US economic indicator.  However, some prefer Supply Management's Purchasing Index because it is highly correlated with GDP, but is released monthly, rather than quarterly.
+
+Worst case scenario (but surprisingly common) is when there is political affiliation is the source of disagreement on the value of an indicator or the current health of the economy. "My party is in charge and this indicator is positive so this indicator is the most meaningful."  In those cases, the information provided becomes completely useless.  It is very important to identify potential bias before accepting conclusions of another.
+
+To make it more challenging, there are other considerations required when deciding on the value of an economic indicator.  For example, many indicators are temporal.  That is to say, they are not describing current economic health, but instead are indicative of past or future health.  These are known as leading or lagging indicators. According to the Corporate Finance Group (CFI), major leading indicators are: stock market performance, retail sales figures, building permits and housing start, manufacturing activity, and inventory balances.  Lagging indicators are GDP growth, income and wage growth/decline, unemployment rate, CPI, interest rates and corporate profits.
+
+Another consideration is between static indicators vs. aggregate indicators or changes over time.  For example, remembering that GDP is a lagging indicator, if we looked back at the past 2 quarters and observed consistent performance, we might reasonably estimate the current health of the economy.  However, if we saw one quarter with higher GDP and two quarter with stagnant or low GDP, we would not reasonably come to the same conclusion, because the change over time is more meaningful than a single spike or drop. Volatility happens but economic change does not result from isolated spikes or dips.  It comes from sustained directional change over time.  
+
+So how do you decide? There are a number of financial and economic entity resources that can help.  Unfortunately, there isn't 100% agreement among them. That's ok, though because there are similarities and we can focus on them.  
+
+
+
+#------------------------------
+
+-  US Department of Economics: GDP, national economic accounts, personal income and outlays, international transactions, international investment position, international trade in goods and services, new foreign direct investment, personal income, real personal income, and personal consumption expenditure
+
+-  Bureau of Economic Analysis: GDP, personal income, international trade in goods and services, and international transactions
+
+-  Trading economics: GDP growth rate, interest rate, inflation rate, unemployment rate, government debt to GDP, balance of trade, current account to GDP and credit rating as main economic indicators.
+
+-  Investopedia: GDP, employment, industrial production, consumer spending, inflation, home sales, home building, construction spending, manufacturing demand, retail sales.
+
+-  Corporate Finance Institute: GDP, purchasing managers index (PMI), consumer purchasing index (CPI)
+
+-  American Association of Individual Investors (AAI): real GDP, money supply, consumer price index (CPI), producer price index (PPI), consumer confidence survey, current employment statistics (CES), retail trade sales and food services, housing starts (new residential construction), manufacturing and trade inventory and sales, S&P
+
+This list of reference is by no means comprehensive and/or unanimously agreed upon.  In fact, its simply the result of searching US economic indicators in Google and choosing a few relatively reputable entities.  I chose six but you could chose more or less.  Just keep in mind that the more sources you chose, the better chances you have to mitigate potential bias.  
+
+It is easy to see some general agreement across the sources.  It's important to consider some economic indicators are a function of multiple components.  For example, GDP is a component of consumption, investment, government expenditures and net exports. So when indicators appear to be 'unique', they may in fact be a component of a generally agreed upon indicator.
+
+
+References:
+US Department of Economics (https://www.commerce.gov/data-and-reports/economic-indicators)
+Bureau of Economic Analysis (https://www.bea.gov/)
+Trading Economics (https://tradingeconomics.com/indicators)
+Investopedia (https://www.investopedia.com/terms/e/economic_indicator.asp)
+Corporate Finance Institute (https://corporatefinanceinstitute.com/resources/knowledge/economics/economic-indicators/)
+American Association of Individual Investors (AAI) (https://www.aaii.com/investing-basics/article/the-top-10-economic-indicators-what-to-watch-and-why?)

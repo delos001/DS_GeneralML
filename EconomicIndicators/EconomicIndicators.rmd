@@ -8,6 +8,7 @@ output: html_notebook
 plot(cars)
 ```
 
+## Introduction
 
 Objectively assessing the health of an economy can be challenging. A single indicator will not provide a complete picture and even a group of indicators may only hint at economic health. There is an abundance of economic indicators consisting of many millions of data points.  There is also an overabundance of reporting on the economy.  Interested citizens could chose to adopt the opinion of another individual who has represented themselves as knowledgeable on the topic at hand.  However, this route requires individuals to navigate a storm of subjective considerations and possible bias.
 
@@ -23,29 +24,22 @@ So how do you decide? There are a number of financial and economic entity resour
 
 
 
-#------------------------------
+### **Some Indicator Resources**
 
--  US Department of Economics: GDP, national economic accounts, personal income and outlays, international transactions, international investment position, international trade in goods and services, new foreign direct investment, personal income, real personal income, and personal consumption expenditure
+-  [US Department of Economics](https://www.commerce.gov/data-and-reports/economic-indicators): GDP, national economic accounts, personal income and outlays, international transactions, international investment position, international trade in goods and services, new foreign direct investment, personal income, real personal income, and personal consumption expenditure
 
--  Bureau of Economic Analysis: GDP, personal income, international trade in goods and services, and international transactions
+-  [Bureau of Economic Analysis](https://www.bea.gov/): GDP, personal income, international trade in goods and services, and international transactions
 
--  Trading economics: GDP growth rate, interest rate, inflation rate, unemployment rate, government debt to GDP, balance of trade, current account to GDP and credit rating as main economic indicators.
+-  [Trading economics](https://tradingeconomics.com/indicators): GDP growth rate, interest rate, inflation rate, unemployment rate, government debt to GDP, balance of trade, current account to GDP and credit rating as main economic indicators.
 
--  Investopedia: GDP, employment, industrial production, consumer spending, inflation, home sales, home building, construction spending, manufacturing demand, retail sales.
+-  [Investopedia](https://www.investopedia.com/terms/e/economic_indicator.asp): GDP, employment, industrial production, consumer spending, inflation, home sales, home building, construction spending, manufacturing demand, retail sales.
 
--  Corporate Finance Institute: GDP, purchasing managers index (PMI), consumer purchasing index (CPI)
+-  [Corporate Finance Institute](https://corporatefinanceinstitute.com/resources/knowledge/economics/economic-indicators/): GDP, purchasing managers index (PMI), consumer purchasing index (CPI)
 
--  American Association of Individual Investors (AAI): real GDP, money supply, consumer price index (CPI), producer price index (PPI), consumer confidence survey, current employment statistics (CES), retail trade sales and food services, housing starts (new residential construction), manufacturing and trade inventory and sales, S&P
+-  [American Association of Individual Investors (AAI)](https://www.aaii.com/investing-basics/article/the-top-10-economic-indicators-what-to-watch-and-why?): real GDP, money supply, consumer price index (CPI), producer price index (PPI), consumer confidence survey, current employment statistics (CES), retail trade sales and food services, housing starts (new residential construction), manufacturing and trade inventory and sales, S&P
 
 This list of reference is by no means comprehensive and/or unanimously agreed upon.  In fact, its simply the result of searching US economic indicators in Google and choosing a few relatively reputable entities.  I chose six but you could chose more or less.  Just keep in mind that the more sources you chose, the better chances you have to mitigate potential bias.  
 
 It is easy to see some general agreement across the sources.  It's important to consider some economic indicators are a function of multiple components.  For example, GDP is a component of consumption, investment, government expenditures and net exports. So when indicators appear to be 'unique', they may in fact be a component of a generally agreed upon indicator.
 
 
-References:
-US Department of Economics (https://www.commerce.gov/data-and-reports/economic-indicators)
-Bureau of Economic Analysis (https://www.bea.gov/)
-Trading Economics (https://tradingeconomics.com/indicators)
-Investopedia (https://www.investopedia.com/terms/e/economic_indicator.asp)
-Corporate Finance Institute (https://corporatefinanceinstitute.com/resources/knowledge/economics/economic-indicators/)
-American Association of Individual Investors (AAI) (https://www.aaii.com/investing-basics/article/the-top-10-economic-indicators-what-to-watch-and-why?)

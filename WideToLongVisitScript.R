@@ -193,7 +193,7 @@ finalvdf = data.frame(meltvdf) %>%
   dplyr::mutate(Language = ifelse(is.na(Language), 'English', Language)) %>%
   
   dplyr::left_join(amendfile, by = 'Patient') %>%
-  dplyr::mutate(Amendment = ifelse(is.na(Amd), "", Amd)) %>%
+  dplyr::mutate(Amendment = ifelse(is.na(Amd), " ", Amd)) %>%
   
   dplyr::arrange(`Site`, `Patient`, `Visit.Date`) %>%
   

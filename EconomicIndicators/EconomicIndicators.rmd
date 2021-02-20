@@ -43,3 +43,12 @@ This list of reference is by no means comprehensive and/or unanimously agreed up
 It is easy to see some general agreement across the sources.  It's important to consider some economic indicators are a function of multiple components.  For example, GDP is a component of consumption, investment, government expenditures and net exports. So when indicators appear to be 'unique', they may in fact be a component of a generally agreed upon indicator.
 
 
+
+### **Analysis**
+
+#### **GDP***
+
+
+tblTOC = 
+  read.delim('https://apps.bea.gov/national/Release/TXT/TablesRegister.txt', 
+                    sep = ',', colClasses = 'character')
